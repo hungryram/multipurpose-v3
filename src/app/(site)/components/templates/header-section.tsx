@@ -28,7 +28,7 @@ export default function HeaderSection({
     (secondaryButtonLink?.internalLink?._type === "legal" && `/legal/${secondaryButtonLink?.internalLink.slug}`) ||
     (secondaryButtonLink?.internalLink?._type === "services" && `/services/${secondaryButtonLink?.internalLink.slug}`) ||
     (secondaryButtonLink?.internalLink?._type === "team" && `/team/${secondaryButtonLink?.internalLink.slug}`) ||
-    (secondaryButtonLink?.externalUrl && `${buttonLink?.externalUrl}`)
+    (secondaryButtonLink?.externalUrl && `${secondaryButtonLink?.externalUrl}`)
 
   return (
     <>

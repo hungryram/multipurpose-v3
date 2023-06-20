@@ -8,6 +8,7 @@ export const appearance = groq`
     'navBgColor': header.headerColor.hex,
     'websiteTextColor': mainColors.websiteTextColor.hex,
     'websiteBodyColor': mainColors.websiteBodyColor.hex,
+    'websiteHeadingColor': mainColors.websiteHeadingColor.hex,
     'mobileIconColor': header.hamburgerMenuColor.hex,
     'primaryButtonBg': mainColors.buttonBackgroundColor.hex,
     'primaryButtonText': mainColors.buttonTextColor.hex,
