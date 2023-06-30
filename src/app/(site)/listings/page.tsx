@@ -1,11 +1,9 @@
-import Script from "next/script";
-
 export default function ListingsPage() {
     return (
         <div>
-            <Script id="ihfIDXScript">
-                {`document.currentScript.replaceWith(ihfKestrel.render());`}
-            </Script>
+            <script
+              dangerouslySetInnerHTML={{ __html: `document.currentScript.replaceWith(ihfKestrel.render());` }}
+            />
         </div>
     )
 }
