@@ -8,22 +8,28 @@ export default function IdxLayout({
 }) {
     return (
         <>
-            <Script id="ihf-kestrel" src="https://kestrel.idxhome.com/ihf-kestrel.js" strategy="beforeInteractive"/>
-            <Script id="ihfSCript" strategy="beforeInteractive">
-                {`window.ihfKestrel = window.ihfKestrel || {};
+            <html lang="en">
+                <body>
+                    <Script id="ihf-kestrel" src="https://kestrel.idxhome.com/ihf-kestrel.js" />
+                    <Script id="ihfSCript">
+                        {`window.ihfKestrel = window.ihfKestrel || {};
 	ihfKestrel.config = {
 		platform: "custom",
 		activationToken: "3779C949-155D-6043-0911FD9A208A875D",
 	};`}
-            </Script>
-            <section>
-                <div className="section">
-                    <h1>LAYOUT</h1>
-                    <div className="container">
-                        {children}
+                    </Script>
+                    <div className="section">
+                        <div className="container">
+                            <div className="content">
+                                <h1>Layout</h1>
+                                <div className="section">
+                                    {children}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </body>
+            </html>
         </>
     )
 }
