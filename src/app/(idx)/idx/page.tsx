@@ -4,9 +4,7 @@ export default function IdxPage() {
     return (
         <div className="section">
             <div className="container">
-                <script
-                    dangerouslySetInnerHTML={{ __html: `document.currentScript.replaceWith(ihfKestrel.render());` }}
-                />
+                <script>document.currentScript.replaceWith(ihfKestrel.render());</script>
             </div>
         </div>
     )
