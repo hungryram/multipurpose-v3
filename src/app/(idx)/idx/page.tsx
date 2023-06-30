@@ -1,5 +1,3 @@
-'use client'
-
 export default function IdxPage() {
     return (
         <div className="section">
