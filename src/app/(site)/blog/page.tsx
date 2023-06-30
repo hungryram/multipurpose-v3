@@ -120,7 +120,7 @@ export default async function BlogPage() {
                   key={post?._id}
                   title={post?.title}
                   slug={`blog/${post.slug}`}
-                  date={format(parsedDate, 'LLLL	d, yyyy')}
+                  date={post?.date ? format(parsedDate, 'LLLL	d, yyyy') : undefined}
                   image={postImage?.url}
                   blurData={postImage?.lqip}
                   altText={postImage?.altText}

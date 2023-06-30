@@ -8,6 +8,7 @@ import GoogleAnalytics from './components/global/analytics'
 import { interFont } from '../fonts'
 import Pixel from './components/global/pixel'
 import NavbarWide from './components/global/navbar-wide'
+import Script from 'next/script'
 
 // GENERATES SEO
 export async function generateMetadata(): Promise<Metadata> {
@@ -147,6 +148,14 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        <Script id="ihf-kestrel" src="https://kestrel.idxhome.com/ihf-kestrel.js" />
+        <Script id="ihfSCript">
+          {`window.ihfKestrel = window.ihfKestrel || {};
+	ihfKestrel.config = {
+		platform: "custom",
+		activationToken: "3779C949-155D-6043-0911FD9A208A875D",
+	};`}
+        </Script>
         <style>
           {`
               :root {
