@@ -10,8 +10,8 @@ export default function IdxLayout({
         <>
             <html lang="en">
                 <body>
-                    <Script id="ihf-kestrel" src="https://kestrel.idxhome.com/ihf-kestrel.js" />
-                    <Script id="ihfSCript">
+                    <Script id="ihf-kestrel" src="https://kestrel.idxhome.com/ihf-kestrel.js" strategy="beforeInteractive"/>
+                    <Script id="ihfSCript" strategy="beforeInteractive">
                         {`window.ihfKestrel = window.ihfKestrel || {};
 	ihfKestrel.config = {
 		platform: "custom",
