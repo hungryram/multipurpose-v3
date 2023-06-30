@@ -1,4 +1,6 @@
+'use client'
 import Script from "next/script"
+import "../(site)/globals.css"
 
 export default function IdxLayout({
     children, // will be a page or nested layout
