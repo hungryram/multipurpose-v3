@@ -1,5 +1,7 @@
 'use client'
 
+import Script from "next/script"
+
 export default function ListingsPage() {
     return (
         <div>
@@ -8,8 +10,12 @@ export default function ListingsPage() {
             </div>
             <div className="section">
                 <div className="container">
-                    <script>document.currentScript.replaceWith(ihfKestrel.render());</script>
-                </div>
+                <Script
+  id="listingsScript"
+  dangerouslySetInnerHTML={{
+    __html: `document.currentScript.replaceWith(ihfKestrel.render())`,
+  }}
+/>                </div>
             </div>
         </div>
     )
