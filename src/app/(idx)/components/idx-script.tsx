@@ -6,12 +6,15 @@ export default function IdxScript({ id }: { id: string }) {
         <>
             <div className="section">
                 <div className="container">
-                    <Script
+                    {/* <Script
                         id={id}
                         dangerouslySetInnerHTML={{
                             __html: `document.currentScript.replaceWith(ihfKestrel.render())`,
                         }}
-                    />
+                    /> */}
+                    <div id="idxWrapper" dangerouslySetInnerHTML={{
+                        __html: `<script>document.currentScript.replaceWith(ihfKestrel.render())</script>`
+                    }}/>
                 </div>
             </div>
         </>
