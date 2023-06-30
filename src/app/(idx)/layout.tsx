@@ -1,6 +1,5 @@
 'use client'
 import Script from "next/script"
-import "../(site)/globals.css"
 
 export default function IdxLayout({
     children, // will be a page or nested layout
@@ -9,8 +8,8 @@ export default function IdxLayout({
 }) {
     return (
         <>
-            <Script id="ihf-kestrel" src="https://kestrel.idxhome.com/ihf-kestrel.js" />
-            <Script id="ihfSCript">
+            <Script id="ihf-kestrel" src="https://kestrel.idxhome.com/ihf-kestrel.js" strategy="beforeInteractive"/>
+            <Script id="ihfSCript" strategy="beforeInteractive">
                 {`window.ihfKestrel = window.ihfKestrel || {};
 	ihfKestrel.config = {
 		platform: "custom",
@@ -19,6 +18,7 @@ export default function IdxLayout({
             </Script>
             <section>
                 <div className="section">
+                    <h1>LAYOUT</h1>
                     <div className="container">
                         {children}
                     </div>
