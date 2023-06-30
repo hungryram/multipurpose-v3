@@ -1,11 +1,11 @@
-import Script from "next/script";
-
 export default function IdxPage() {
     return (
-        <div>
-            <Script id="ihfIDXScript">
-                {`document.currentScript.replaceWith(ihfKestrel.render());`}
-            </Script>
+        <div className="section">
+            <div className="container">
+                <script
+                    dangerouslySetInnerHTML={{ __html: `document.currentScript.replaceWith(ihfKestrel.render());` }}
+                />
+            </div>
         </div>
     )
 }
