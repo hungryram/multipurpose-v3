@@ -9,6 +9,7 @@ import { interFont } from '../fonts'
 import Pixel from '../(site)/components/global/pixel'
 import NavbarWide from '../(site)/components/global/navbar-wide'
 import RootScript from './components/root-idx-script'
+import Script from 'next/script'
 
 // GENERATES SEO
 export async function generateMetadata(): Promise<Metadata> {
@@ -150,7 +151,6 @@ export default async function IdxLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <RootScript />
-
         <style>
           {`
               :root {
@@ -199,11 +199,7 @@ export default async function IdxLayout({
             {...navbarSchema}
           />
         }
-        <div className="section">
-          <div className="container">
-            {children}
-          </div>
-        </div>
+        {children}
         <Footer
           singleColumn={data?.appearances?.footer?.singleColumn}
           footerText={data.appearances?.footer?.footerText}
