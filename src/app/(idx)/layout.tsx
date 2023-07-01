@@ -9,7 +9,6 @@ import { interFont } from '../fonts'
 import Pixel from '../(site)/components/global/pixel'
 import NavbarWide from '../(site)/components/global/navbar-wide'
 import RootScript from './components/root-idx-script'
-import Script from 'next/script'
 
 // GENERATES SEO
 export async function generateMetadata(): Promise<Metadata> {
