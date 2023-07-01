@@ -1,7 +1,7 @@
 'use client'
 import { useEffect } from "react";
 
-export default function IdxScript({ id }: { id?: string }) {
+export default function IdxScript() {
     useEffect(() => {
         const ihomefinder = document.getElementById("ihomefinder")
         const script = document.createTextNode(`ihfKestrel.render()`);
