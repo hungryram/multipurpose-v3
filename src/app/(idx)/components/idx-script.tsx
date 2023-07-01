@@ -1,25 +1,23 @@
-import Script from "next/script"
+'use client'
+import { useEffect } from "react";
 
-export default function IdxScript({ id }: { id: string }) {
+export default function IdxScript({ id }: { id?: string }) {
+    useEffect(() => {
+        const ihomefinder = document.getElementById("ihomefinder")
+        const script = document.createTextNode(`ihfKestrel.render()`);
+        ihomefinder.appendChild(script);
+    }, []);
+
     return (
         <>
             <div className="section">
                 <div className="container">
-                    {/* <div
-                        id={id}
+                    <div
+                        id="ihomefinder"
                         dangerouslySetInnerHTML={{
-                            __html: `<script>document.currentScript.replaceWith(ihfKestrel.render())</script>`,
-                        }}
-                    /> */}
-                    <Script 
-                        id={id}
-                        dangerouslySetInnerHTML={{
-                            __html: `document.currentScript.replaceWith(ihfKestrel.render())`
+                            __html: `<script>ihfKestrel.render()</script>`,
                         }}
                     />
-                    {/* <script id="idxWrapper" dangerouslySetInnerHTML={{
-                        __html: `document.currentScript.replaceWith(ihfKestrel.render());`
-                    }}/> */}
                 </div>
             </div>
         </>

@@ -1,14 +1,14 @@
-
-'use client'
 import IdxScript from "../components/idx-script"
 
 export default function IdxPage() {
     return (
-        // <IdxScript id="idxPage" />
-        <div 
-            dangerouslySetInnerHTML={{
-                __html: `{idx_body}`
-            }}
-        />
+        <div className="section">
+            <div className="container">
+            {/* <script id="idxWrapper" dangerouslySetInnerHTML={{
+                        __html: `document.currentScript.replaceWith(ihfKestrel.render());`
+                    }}/> */}
+                <IdxScript id="idxPage"/>
+            </div>
+        </div>
     )
 }
