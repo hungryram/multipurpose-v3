@@ -65,7 +65,7 @@ export default defineType({
                         {
                             title: 'Content',
                             name: 'content',
-                            type: 'text',
+                            type: 'contentEditor',
                         },
                         {
                             title: 'Icon',
@@ -134,6 +134,19 @@ export default defineType({
             type: 'number',
             validation: Rule => Rule.min(1).max(4),
             group: 'settings'
+        },
+        {
+            title: 'Column Height',
+            name: 'columnHeight',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Small', value: 'small' },
+                    { title: 'Medium', value: 'medium' },
+                    { title: 'Large', value: 'large' },
+                ]
+            },
+            group: 'settings',
         },
         {
             title: 'Grid Background Color',

@@ -2,6 +2,7 @@ import Styles from "./feature-section.module.css"
 import * as HeroIcons from '@heroicons/react/24/outline';
 import HeaderSection from "./header-section";
 import Link from "next/link";
+import ContentEditor from "../util/content-editor";
 
 interface Props {
     backgroundStyles: any;
@@ -42,9 +43,9 @@ export default function FeaturedGridBox({
     const styles = {
         paddingTop: paddingTop ?? '5rem',
         paddingBottom: paddingBottom ?? '5rem',
-      }
-    
-      const allStyles = { ...backgroundStyles, ...styles }
+    }
+
+    const allStyles = { ...backgroundStyles, ...styles }
 
     return (
         <div className={`${offsetTop && '-mt-32 relative'}`} style={allStyles}>
@@ -92,9 +93,15 @@ export default function FeaturedGridBox({
                                         {node.value}
                                     </dt>
                                     <dd className={Styles.featureCardContent}>
-                                        <p className="flex-auto" style={{
-                                            color: node?.contentColor?.hex
-                                        }}>{node.content}</p>
+                                        {node?.content &&
+                                            <div style={{
+                                                color: node?.contentColor?.hex
+                                            }}>
+                                                <ContentEditor
+                                                    content={node.content}
+                                                />
+                                            </div>
+                                        }
                                         {node?.button?.text &&
                                             <p className="mt-6">
                                                 <Link href={linkUrl ?? '/'} className={`${Styles.featureCardCta}`} aria-label={`Link to ${node?.value}`} style={{

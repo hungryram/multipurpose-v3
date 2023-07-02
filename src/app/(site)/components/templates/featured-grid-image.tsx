@@ -2,6 +2,7 @@ import Image from "next/image";
 import Styles from "./feature-section.module.css"
 import HeaderSection from "./header-section";
 import Link from "next/link";
+import ContentEditor from "../util/content-editor";
 
 interface Props {
     backgroundStyles: any;
@@ -17,6 +18,7 @@ interface Props {
     secondaryButtonStyle: any;
     paddingTop: string;
     paddingBottom: string;
+    columnHeight: any;
 }
 
 export default function FeaturedGridImageTextOutside({
@@ -33,14 +35,15 @@ export default function FeaturedGridImageTextOutside({
     secondaryButtonStyle,
     paddingTop,
     paddingBottom,
+    columnHeight,
 }: Props) {
 
     const styles = {
         paddingTop: paddingTop ?? '5rem',
         paddingBottom: paddingBottom ?? '5rem',
-      }
-    
-      const allStyles = { ...backgroundStyles, ...styles }
+    }
+
+    const allStyles = { ...backgroundStyles, ...styles }
 
     return (
         <div style={allStyles}>
@@ -76,7 +79,7 @@ export default function FeaturedGridImageTextOutside({
                             return (
                                 <div key={node._key}>
                                     {node?.image?.asset?.url &&
-                                        <div className="relative w-full h-96">
+                                        <div className={`relative w-full ${columnHeight}`}>
                                             <Image
                                                 src={node?.image?.asset?.url}
                                                 fill={true}
@@ -93,10 +96,15 @@ export default function FeaturedGridImageTextOutside({
                                                 color: node?.headingColor?.hex
                                             }}>{node.value}</h3>
                                         }
-
-                                        <div style={{
-                                            color: node?.contentColor?.hex
-                                        }}>{node.content}</div>
+                                        {node?.content &&
+                                            <div style={{
+                                                color: node?.contentColor?.hex
+                                            }}>
+                                                <ContentEditor
+                                                    content={node.content}
+                                                />
+                                            </div>
+                                        }
                                         {node?.button?.text &&
                                             <p className="mt-6">
                                                 <Link href={linkUrl ?? '/'} className={`${Styles.featureCardCta}`} aria-label={`Link to ${node?.value}`} style={{

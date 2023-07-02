@@ -2,6 +2,7 @@ import Image from "next/image";
 import Styles from "./feature-section.module.css"
 import HeaderSection from "./header-section";
 import Link from "next/link";
+import ContentEditor from "../util/content-editor";
 
 interface Props {
     backgroundStyles: any;
@@ -17,6 +18,7 @@ interface Props {
     secondaryButtonStyle: any;
     paddingTop: string;
     paddingBottom: string;
+    columnHeight: any;
 }
 
 export default function FeaturedGridImageTextInside({
@@ -33,14 +35,15 @@ export default function FeaturedGridImageTextInside({
     secondaryButtonStyle,
     paddingTop,
     paddingBottom,
+    columnHeight
 }: Props) {
 
     const styles = {
         paddingTop: paddingTop ?? '5rem',
         paddingBottom: paddingBottom ?? '5rem',
-      }
-    
-      const allStyles = { ...backgroundStyles, ...styles }
+    }
+
+    const allStyles = { ...backgroundStyles, ...styles }
 
     return (
         <div style={allStyles}>
@@ -74,7 +77,7 @@ export default function FeaturedGridImageTextInside({
                                 (node.blockLinking?.externalUrl && `${node.blockLinking?.externalUrl}`);
 
                             return (
-                                <div className="relative isolate flex flex-col bg-black justify-end overflow-hidden rounded-sm px-8 pb-8 pt-80 sm:pt-48 lg:pt-80" key={node._key}>
+                                <div className={`relative isolate flex flex-col bg-black justify-end overflow-hidden rounded- p-4 ${columnHeight}`} key={node._key}>
                                     {node?.image?.asset?.url ?
                                         <Image
                                             src={node?.image?.asset?.url}
@@ -95,13 +98,15 @@ export default function FeaturedGridImageTextInside({
                                             color: node?.headingColor?.hex
                                         }}>{node.value}</h3>
                                     }
-                                    <div >
-                                        <p style={{
+                                    {node?.content &&
+                                        <div style={{
                                             color: node?.contentColor?.hex
                                         }}>
-                                            {node.content}
-                                        </p>
-                                    </div>
+                                            <ContentEditor
+                                                content={node.content}
+                                            />
+                                        </div>
+                                    }
                                     {node?.button?.text &&
                                         <Link href={linkUrl ?? '/'} className="absolute inset-0" aria-label={`Link to ${node?.value}`} style={{
                                             color: node?.linkColor?.hex

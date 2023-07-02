@@ -394,6 +394,11 @@ export default function Main({
                                     blocks={section?.childBlocks}
                                     content={section?.content}
                                     textAlign={section?.textAlign}
+                                    columnHeight={
+                                        section?.columnHeight === 'small' && 'h-52' ||
+                                        section?.columnHeight === 'medium' && 'h-96' ||
+                                        section?.columnHeight === 'large' && 'h-[32rem]'
+                                    }
                                     {...settingsSchema}
                                 />
                             }
@@ -414,6 +419,11 @@ export default function Main({
                                     blocks={section?.childBlocks}
                                     content={section?.content}
                                     textAlign={section?.textAlign}
+                                    columnHeight={
+                                        section?.columnHeight === 'small' && 'h-52' ||
+                                        section?.columnHeight === 'medium' && 'h-96' ||
+                                        section?.columnHeight === 'large' && 'h-[32rem]'
+                                    }
                                     {...settingsSchema}
                                 />
                             }
