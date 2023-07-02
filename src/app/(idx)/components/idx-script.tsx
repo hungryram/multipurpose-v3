@@ -3,7 +3,11 @@ import { useEffect } from "react";
 
 export default function IdxScript() {
     useEffect(() => {
-        const ihomefinder = document.getElementById("ihomefinder")
+        const ihomefinder = document.querySelector("#ihomefinder");
+        if (!ihomefinder) {
+            return;
+        }
+
         const script = document.createTextNode(`ihfKestrel.render()`);
         ihomefinder.appendChild(script);
     }, []);

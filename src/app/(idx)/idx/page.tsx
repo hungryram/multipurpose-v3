@@ -7,7 +7,7 @@ export default function IdxPage() {
             {/* <script id="idxWrapper" dangerouslySetInnerHTML={{
                         __html: `document.currentScript.replaceWith(ihfKestrel.render());`
                     }}/> */}
-                <IdxScript id="idxPage"/>
+                <IdxScript/>
             </div>
         </div>
     )
