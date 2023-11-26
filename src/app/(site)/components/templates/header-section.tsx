@@ -37,11 +37,11 @@ export default function HeaderSection({
       {primaryButtonLinking || secondaryButtonLinking ? (
         <div className={`content 
         ${textAlign === 'left' && 'text-left max-w-4xl'}
-        ${textAlign === 'center' && 'mx-auto text-center max-w-4xl'}
+        ${textAlign === 'center' && 'mx-auto text-center justify-center max-w-4xl'}
         ${textAlign === 'right' && 'text-right justify-end'}
         `}>
           <ContentEditor content={content} />
-          <div className={`mt-10 flex items-center gap-x-6 ${textAlign === 'left' && 'text-left max-w-4xl'} ${textAlign === 'center' && 'mx-auto text-center max-w-4xl'} ${textAlign === 'right' && 'text-right justify-end'}`}>
+          <div className={`mt-10 flex items-center gap-x-6 ${textAlign === 'left' && 'text-left max-w-4xl'} ${textAlign === 'center' && 'mx-auto text-center justify-center max-w-4xl'} ${textAlign === 'right' && 'text-right justify-end'}`}>
             {primaryButtonLinking && (
               <Link href={primaryButtonLinking} className="primary-button" style={primaryButtonStyle} target={buttonLink?.externalUrl && '_blank'}>
                 {primaryButtonText}
@@ -57,7 +57,7 @@ export default function HeaderSection({
       ) : (
         <div className={`content 
         ${textAlign === 'left' && 'text-left max-w-4xl'}
-        ${textAlign === 'center' && 'mx-auto text-center max-w-4xl'}
+        ${textAlign === 'center' && 'mx-auto text-center justify-center max-w-4xl'}
         ${textAlign === 'right' && 'text-right justify-end'}
         `}>
           <ContentEditor content={content} />
