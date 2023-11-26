@@ -131,7 +131,6 @@ export default async function IdxLayout({
 
   return (
     <html lang="en">
-
       <body className={interFont.variable}>
         {data?.profileSettings?.settings?.googleID &&
           <GoogleAnalytics GA_TRACKING_ID={data?.profileSettings?.settings?.googleID} />

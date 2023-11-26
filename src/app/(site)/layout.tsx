@@ -9,6 +9,7 @@ import { interFont } from '../fonts'
 import Pixel from './components/global/pixel'
 import NavbarWide from './components/global/navbar-wide'
 import Script from 'next/script'
+import RootScript from '../(idx)/components/root-idx-script'
 export const revalidate = 0;
 
 // GENERATES SEO
@@ -131,10 +132,11 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      {data?.profileSettings?.settings?.googleID &&
-        <GoogleAnalytics GA_TRACKING_ID={data?.profileSettings?.settings?.googleID} />
-      }
+
       <body className={interFont.variable}>
+        {data?.profileSettings?.settings?.googleID &&
+          <GoogleAnalytics GA_TRACKING_ID={data?.profileSettings?.settings?.googleID} />
+        }
         {data?.profileSettings?.settings?.facebookPixel &&
           <Pixel
             facebookPixel={data?.profileSettings?.settings?.facebookPixel}
@@ -148,14 +150,7 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <Script id="ihf-kestrel" src="https://kestrel.idxhome.com/ihf-kestrel.js" />
-        <Script id="ihfSCript">
-          {`window.ihfKestrel = window.ihfKestrel || {};
-	ihfKestrel.config = {
-		platform: "custom",
-		activationToken: "3779C949-155D-6043-0911FD9A208A875D",
-	};`}
-        </Script>
+        <RootScript />
         <style>
           {`
               :root {
@@ -204,7 +199,9 @@ export default async function RootLayout({
             {...navbarSchema}
           />
         }
-        {children}
+        <main id="mainBody">
+          {children}
+        </main>
         <Footer
           singleColumn={data?.appearances?.footer?.singleColumn}
           footerText={data.appearances?.footer?.footerText}

@@ -62,6 +62,7 @@ import teamSectionBuilder from './sanity/schemas/pagebuilder/team-section'
 import blogSectionBuilder from './sanity/schemas/pagebuilder/blog-section'
 import servicesSectionBuilder from './sanity/schemas/pagebuilder/service-section'
 import contentBuilder from './sanity/schemas/pagebuilder/content'
+import widgetBuilder from './sanity/schemas/pagebuilder/widget'
 
 const SANITY_STUDIO_PREVIEW_URL = (
 	process.env.SANITY_STUDIO_PREVIEW_URL
@@ -126,6 +127,7 @@ export default defineConfig({
       servicesSectionBuilder,
       contentBuilder,
       logosBuilder,
+      widgetBuilder
     ]
   },
   plugins: [

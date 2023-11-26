@@ -49,6 +49,7 @@ export default defineType({
                 {type: 'blogDisplay'},
                 {type: 'servicesDisplay'},
                 {type: 'leadForm'},
+                {type: 'widget'},
 
             ]
         }

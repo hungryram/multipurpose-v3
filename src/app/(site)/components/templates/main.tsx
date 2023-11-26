@@ -28,6 +28,9 @@ import HeroBasic from "./hero-basic";
 import DisclosureSeparate from "./disclosure-separate";
 import TestimonialsColumn from "./testimonials-column";
 import LeadFormTwoColumn from "./leadform-two-column";
+import IhfContactWidget from "../../../(idx)/components/widgets/contact-widget";
+import IhfQuickSearch from "@/app/(idx)/components/widgets/quick-search";
+import IhfFeaturedListings from "@/app/(idx)/components/widgets/featured-listings";
 
 interface Props {
     pageBuilder: any[];
@@ -595,6 +598,24 @@ export default function Main({
                                 }}
                             />
                         </div>
+                    )
+                }
+
+                if (section._type === 'widget') {
+
+                    return (
+                        <>
+                            {section?.widgetType === 'contactForm' &&
+                                <IhfContactWidget />
+
+                            }
+                            {section?.widgetType === 'quickSearch' &&
+                                <IhfQuickSearch />
+                            }
+                            {section?.widgetType === 'featuredListings' &&
+                                <IhfFeaturedListings />
+                            }
+                        </>
                     )
                 }
 
