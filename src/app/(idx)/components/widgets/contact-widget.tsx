@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 
 function IhfContactWidget() {
   useEffect(() => {
+    
     const script = document.createElement('script');
     script.textContent = `
       document.currentScript.replaceWith(ihfKestrel.render({
