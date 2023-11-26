@@ -150,7 +150,7 @@ export default function Navbar({
                                   return (
                                     <>
                                       {sub.externalUrl ?
-                                        <a href={sub.externalUrl ?? '/'} className={`${Styles.navLinks} text-black py-2`} id={sub._key} target={sub?.newTab && '_blank'}>{link.text}</a>
+                                        <a href={sub.externalUrl ?? '/'} className={`${Styles.navLinks} text-black py-2`} id={sub._key} target={sub?.newTab && '_blank'}>{sub.text}</a>
                                         :
                                         <Popover.Button
                                           as={Link}
@@ -305,7 +305,7 @@ export default function Navbar({
                                       return (
                                         <>
                                           {sub.externalUrl ?
-                                            <a href={sub.externalUrl ?? '/'} className={`${Styles.navLinks} text-black py-2`} id={sub._key} target={sub?.newTab && '_blank'}>{link.text}</a>
+                                            <a href={sub.externalUrl ?? '/'} className={`${Styles.navLinks} py-2`} id={sub._key} target={sub?.newTab && '_blank'}>{sub.text}</a>
                                             :
                                             <Disclosure.Button as={Link} href={subMenuLinks ?? '/'} className={Styles.navLinks} target={sub.newTab && '_blank'} key={sub._key}>
                                               {sub.text}
