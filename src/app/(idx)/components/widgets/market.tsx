@@ -2,21 +2,31 @@
 import HeaderSection from '@/app/(site)/components/templates/header-section';
 import React, { useEffect } from 'react';
 
-function IhfContactWidget() {
+interface Props {
+    id: string;
+}
+
+function IhfMarketWidget({
+    id
+}: Props) {
   useEffect(() => {
     const script = document.createElement('script');
+    const propID = `"${id}"`;
+
     script.textContent = `
       document.currentScript.replaceWith(ihfKestrel.render({
-        "component": "contactFormWidget",
+		"component": "marketReportWidget",
+		"id": ${propID},
+		"marketReportTypeId": 1
       }));
     `;
 
-    const existingWidgetDiv = document.getElementById('contactForm-ihf-widget');
+    const existingWidgetDiv = document.getElementById('market-ihf-widget');
     let widgetDiv;
 
     if (!existingWidgetDiv) {
       widgetDiv = document.createElement('div');
-      widgetDiv.id = 'contactForm-ihf-widget'; // Add ID to the div
+      widgetDiv.id = 'market-ihf-widget'; // Add ID to the div
       widgetDiv.className = 'container py-20'; // Add Tailwind CSS classes
     } else {
       widgetDiv = existingWidgetDiv;
@@ -29,7 +39,7 @@ function IhfContactWidget() {
     if (containerElement) {
       containerElement.appendChild(widgetDiv);
     } else {
-      console.error('Could not find container element with ID: #contactForm-ihf-widget');
+      console.error('Could not find container element with ID: #market-ihf-widget');
     }
 
     return () => {
@@ -46,4 +56,4 @@ function IhfContactWidget() {
   );
 }
 
-export default IhfContactWidget;
+export default IhfMarketWidget;

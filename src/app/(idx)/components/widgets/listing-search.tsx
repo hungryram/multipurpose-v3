@@ -1,5 +1,4 @@
 'use client'
-import HeaderSection from '@/app/(site)/components/templates/header-section';
 import React, { useEffect } from 'react';
 
 function IhfContactWidget() {
@@ -7,16 +6,16 @@ function IhfContactWidget() {
     const script = document.createElement('script');
     script.textContent = `
       document.currentScript.replaceWith(ihfKestrel.render({
-        "component": "contactFormWidget",
+        "component": "listingSearchWidget",
       }));
     `;
 
-    const existingWidgetDiv = document.getElementById('contactForm-ihf-widget');
+    const existingWidgetDiv = document.getElementById('ihf-listingSearch-widget');
     let widgetDiv;
 
     if (!existingWidgetDiv) {
       widgetDiv = document.createElement('div');
-      widgetDiv.id = 'contactForm-ihf-widget'; // Add ID to the div
+      widgetDiv.id = 'ihf-listingSearch-widget'; // Add ID to the div
       widgetDiv.className = 'container py-20'; // Add Tailwind CSS classes
     } else {
       widgetDiv = existingWidgetDiv;
@@ -29,7 +28,7 @@ function IhfContactWidget() {
     if (containerElement) {
       containerElement.appendChild(widgetDiv);
     } else {
-      console.error('Could not find container element with ID: #contactForm-ihf-widget');
+      console.error('Could not find container element with ID: #ihf-listingSearch-widget');
     }
 
     return () => {
@@ -38,11 +37,9 @@ function IhfContactWidget() {
   }, []);
 
   return (
-    <>
-      <div>
-        {/* Your component's UI content */}
-      </div>
-    </>
+    <div>
+      {/* Your component's UI content */}
+    </div>
   );
 }
 

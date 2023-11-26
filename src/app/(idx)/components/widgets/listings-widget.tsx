@@ -1,17 +1,18 @@
 'use client'
-'use client'
 import React, { useEffect } from 'react';
 
 interface Props {
-  propType: string;
-  status: string;
-  sort: string;
-}
+    propType: string;
+    status: string;
+    sort: string;
+    id: string;
+  }
 
-function IhfFeaturedListings({
-  propType,
-  status,
-  sort
+function IhfListingsWidget({
+    propType,
+    status,
+    sort,
+    id
 }: Props) {
   useEffect(() => {
     const script = document.createElement('script');
@@ -19,23 +20,25 @@ function IhfFeaturedListings({
     const propertyTypeValue = `"${propType}"`;
     const propStatus = `"${status}"`;
     const propSort = `"${sort}"`;
+    const propID = `"${id}"`;
 
     script.textContent = `
       document.currentScript.replaceWith(ihfKestrel.render({
-		"component": "featuredListingSearchWidget",
-		"propertyType": ${propertyTypeValue},
+        "component": "propertiesGalleryWidget",
+        "cityId": ${propID},
+		"propertyTypes": ${propertyTypeValue},
 		"status": ${propStatus},
 		"sort": ${propSort},
 		"resultsPerPage": 15
       }));
     `;
 
-    const existingWidgetDiv = document.getElementById('featuredListings-ihf-widget');
+    const existingWidgetDiv = document.getElementById('listings-ihf-widget');
     let widgetDiv;
 
     if (!existingWidgetDiv) {
       widgetDiv = document.createElement('div');
-      widgetDiv.id = 'featuredListings-ihf-widget'; // Add ID to the div
+      widgetDiv.id = 'listings-ihf-widget'; // Add ID to the div
       widgetDiv.className = 'container py-20'; // Add Tailwind CSS classes
     } else {
       widgetDiv = existingWidgetDiv;
@@ -48,7 +51,7 @@ function IhfFeaturedListings({
     if (containerElement) {
       containerElement.appendChild(widgetDiv);
     } else {
-      console.error('Could not find container element with ID: #mainBody');
+      console.error('Could not find container element with ID: #listings-ihf-widget');
     }
 
     return () => {
@@ -63,4 +66,4 @@ function IhfFeaturedListings({
   );
 }
 
-export default IhfFeaturedListings;
+export default IhfListingsWidget;

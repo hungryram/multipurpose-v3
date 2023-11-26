@@ -2,13 +2,19 @@
 'use client'
 import React, { useEffect } from 'react';
 
-function IhfQuickSearch() {
+function IhfQuickSearch({
+  qsTypeSanity
+}: {
+  qsTypeSanity: string
+}) {
   useEffect(() => {
     const script = document.createElement('script');
+    const qsType = `"${qsTypeSanity}"`;
+
     script.textContent = `
       document.currentScript.replaceWith(ihfKestrel.render({
 		"component": "quickSearchWidget",
-		"style": "horizontal"
+		"style": ${qsType}
       }));
     `;
 

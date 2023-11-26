@@ -1,22 +1,30 @@
 'use client'
-import HeaderSection from '@/app/(site)/components/templates/header-section';
 import React, { useEffect } from 'react';
 
-function IhfContactWidget() {
+function IhfRegistrationFormWidget({
+    redirect
+}: {
+    redirect: string
+}) {
   useEffect(() => {
     const script = document.createElement('script');
+    const redirectPage = `"${redirect}"`;
+
+
     script.textContent = `
       document.currentScript.replaceWith(ihfKestrel.render({
-        "component": "contactFormWidget",
+		"component": "registrationFormWidget",
+		"redirectUrl": ${redirectPage},
+		"buttonText": "Submit"
       }));
     `;
 
-    const existingWidgetDiv = document.getElementById('contactForm-ihf-widget');
+    const existingWidgetDiv = document.getElementById('registrationForm-ihf-widget');
     let widgetDiv;
 
     if (!existingWidgetDiv) {
       widgetDiv = document.createElement('div');
-      widgetDiv.id = 'contactForm-ihf-widget'; // Add ID to the div
+      widgetDiv.id = 'registrationForm-ihf-widget'; // Add ID to the div
       widgetDiv.className = 'container py-20'; // Add Tailwind CSS classes
     } else {
       widgetDiv = existingWidgetDiv;
@@ -29,7 +37,7 @@ function IhfContactWidget() {
     if (containerElement) {
       containerElement.appendChild(widgetDiv);
     } else {
-      console.error('Could not find container element with ID: #contactForm-ihf-widget');
+      console.error('Could not find container element with ID: #registrationForm-ihf-widget');
     }
 
     return () => {
@@ -46,4 +54,4 @@ function IhfContactWidget() {
   );
 }
 
-export default IhfContactWidget;
+export default IhfRegistrationFormWidget;
