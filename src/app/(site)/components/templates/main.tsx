@@ -43,10 +43,6 @@ interface Props {
     city: string;
     state: string;
     zip_code: string;
-    emailAlerts: string;
-    sendFrom: string;
-    emailBcc: string;
-    emailCc: string;
     // SOCIAL
     facebook: any;
     youtube: any;
@@ -85,11 +81,6 @@ export default function Main({
     pinterest,
     tiktok,
     zillow,
-    // FORM
-    emailAlerts,
-    sendFrom,
-    emailBcc,
-    emailCc,
 }: Props) {
     return (
         <>
@@ -566,10 +557,6 @@ export default function Main({
                             zillow={zillow}
                             // FORMS
                             formBuilder={section?.formBuilder}
-                            emailAlerts={emailAlerts}
-                            sendFrom={sendFrom}
-                            emailBcc={emailBcc}
-                            emailCc={emailCc}
                         />
                     );
                 }

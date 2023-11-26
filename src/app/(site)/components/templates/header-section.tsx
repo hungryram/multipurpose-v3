@@ -20,6 +20,7 @@ export default function HeaderSection({
     (buttonLink?.internalLink?._type === "legal" && `/legal/${buttonLink?.internalLink.slug}`) ||
     (buttonLink?.internalLink?._type === "services" && `/services/${buttonLink?.internalLink.slug}`) ||
     (buttonLink?.internalLink?._type === "team" && `/team/${buttonLink?.internalLink.slug}`) ||
+    (buttonLink?.internalLink?._type === "homeDesign" && `/`) ||
     (buttonLink?.externalUrl && `${buttonLink?.externalUrl}`)
 
   const secondaryButtonLinking =
@@ -28,6 +29,7 @@ export default function HeaderSection({
     (secondaryButtonLink?.internalLink?._type === "legal" && `/legal/${secondaryButtonLink?.internalLink.slug}`) ||
     (secondaryButtonLink?.internalLink?._type === "services" && `/services/${secondaryButtonLink?.internalLink.slug}`) ||
     (secondaryButtonLink?.internalLink?._type === "team" && `/team/${secondaryButtonLink?.internalLink.slug}`) ||
+    (secondaryButtonLink?.internalLink?._type === "homeDesign" && `/`) ||
     (secondaryButtonLink?.externalUrl && `${secondaryButtonLink?.externalUrl}`)
 
   return (
@@ -39,7 +41,7 @@ export default function HeaderSection({
         ${textAlign === 'right' && 'text-right justify-end'}
         `}>
           <ContentEditor content={content} />
-          <div className={`mt-10 flex items-center gap-x-6 ${textAlign}`}>
+          <div className={`mt-10 flex items-center gap-x-6 ${textAlign === 'left' && 'text-left max-w-4xl'} ${textAlign === 'center' && 'mx-auto text-center max-w-4xl'} ${textAlign === 'right' && 'text-right justify-end'}`}>
             {primaryButtonLinking && (
               <Link href={primaryButtonLinking} className="primary-button" style={primaryButtonStyle} target={buttonLink?.externalUrl && '_blank'}>
                 {primaryButtonText}

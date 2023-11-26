@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getPage } from "../../../../lib/groq-data";
 import Main from "../components/templates/main";
 import { Metadata } from 'next';
+export const revalidate = 0;
 
 type Props = {
     params: {
@@ -110,11 +111,6 @@ export default async function Page({ params }: Props) {
                 pinterest={page?.profileSettings?.social?.pinterest}
                 tiktok={page?.profileSettings?.social?.tiktok}
                 zillow={page?.profileSettings?.social?.zillow}
-                // FORMS
-                emailAlerts={page?.profileSettings?.settings?.emailAlerts}
-                sendFrom={page?.profileSettings?.settings?.sendFrom}
-                emailBcc={page?.profileSettings?.settings?.emailBcc}
-                emailCc={page?.profileSettings?.settings?.emailCc}
                 // PAGE FOLDERS
                 allServices={page?.allServices}
                 allTestimonials={page?.allTestimonial}

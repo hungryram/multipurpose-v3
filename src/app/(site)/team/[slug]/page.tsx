@@ -7,6 +7,7 @@ import { DevicePhoneMobileIcon, EnvelopeIcon } from "@heroicons/react/24/outline
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next';
 import Social from '../../components/templates/social'
+export const revalidate = 0;
 
 type Props = {
     params: {

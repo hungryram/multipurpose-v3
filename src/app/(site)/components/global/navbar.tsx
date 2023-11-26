@@ -22,6 +22,7 @@ export interface NavbarProps {
   enableTransparent: boolean;
 }
 
+
 export default function Example({
   company_name,
   logo,
@@ -105,6 +106,7 @@ export default function Example({
                 (link.internalLink?._type === "legal" && `/legal/${link.internalLink.slug}`) ||
                 (link.internalLink?._type === "services" && `/services/${link.internalLink.slug}`) ||
                 (link.internalLink?._type === "team" && `/team/${link.internalLink.slug}`) ||
+                (link.internalLink?._type === "homeDesign" && `/`) ||
                 (link.externalUrl && `${link.externalUrl}`)
 
               if (link?.subMenu?.length > 0) {
@@ -142,18 +144,26 @@ export default function Example({
                                     (sub.internalLink?._type === "pages" && `/${sub.internalLink.slug}`) ||
                                     (sub.internalLink?._type === "services" && `/services/${sub.internalLink.slug}`) ||
                                     (sub.internalLink?._type === "team" && `/team/${sub.internalLink.slug}`) ||
+                                    (sub.internalLink?._type === "homeDesign" && `/`) ||
                                     (sub.externalUrl && `${sub.externalUrl}`)
 
                                   return (
-                                    <Popover.Button
-                                      as={Link}
-                                      key={sub._key}
-                                      href={subMenuLinks ?? '/'}
-                                      target={sub.newTab && '_blank'}
-                                      className={`${Styles.navLinks} text-black py-2`}
-                                    >
-                                      {sub.text}
-                                    </Popover.Button>
+                                    <>
+                                      {sub.externalUrl ?
+                                        <a href={sub.externalUrl ?? '/'} className={`${Styles.navLinks} text-black py-2`} id={sub._key} target={sub?.newTab && '_blank'}>{link.text}</a>
+                                        :
+                                        <Popover.Button
+                                          as={Link}
+                                          key={sub._key}
+                                          id={sub._id}
+                                          href={subMenuLinks ?? '/'}
+                                          target={sub.newTab && '_blank'}
+                                          className={`${Styles.navLinks} text-black py-2`}
+                                        >
+                                          {sub.text}
+                                        </Popover.Button>
+                                      }
+                                    </>
                                   )
                                 })}
                               </div>
@@ -166,12 +176,21 @@ export default function Example({
                 )
               } else {
                 return (
-                  <Link
-                    key={link._id}
-                    href={menuLinks}
-                    className={Styles.navLinks}>
-                    {link.text}
-                  </Link>
+                  <>
+                    {link.externalUrl ?
+                      <a href={link.externalUrl} id={link._id} className={Styles.navLinks} target={link?.newTab && '_blank'}>{link.text}</a>
+                      :
+                      <Link
+                        key={link._id}
+                        id={link._id}
+                        href={menuLinks}
+                        className={Styles.navLinks}
+                        target={link?.newTab && '_blank'}
+                      >
+                        {link.text}
+                      </Link>
+                    }
+                  </>
                 )
               }
             })}
@@ -243,6 +262,7 @@ export default function Example({
                     (link.internalLink?._type === "legal" && `/legal/${link.internalLink.slug}`) ||
                     (link.internalLink?._type === "services" && `/services/${link.internalLink.slug}`) ||
                     (link.internalLink?._type === "team" && `/team/${link.internalLink.slug}`) ||
+                    (link.internalLink?._type === "homeDesign" && `/`) ||
                     (link.externalUrl && `${link.externalUrl}`)
 
                   if (link?.subMenu?.length > 0) {
@@ -280,12 +300,18 @@ export default function Example({
                                         (sub.internalLink?._type === "pages" && `/${sub.internalLink.slug}`) ||
                                         (sub.internalLink?._type === "services" && `/services/${sub.internalLink.slug}`) ||
                                         (sub.internalLink?._type === "team" && `/team${sub.internalLink.slug}`) ||
+                                        (sub.internalLink?._type === "homeDesign" && `/`) ||
                                         (sub.externalUrl && `${sub.externalUrl}`)
-
                                       return (
-                                        <Disclosure.Button as={Link} href={subMenuLinks ?? '/'} className={Styles.navLinks} target={sub.newTab && '_blank'} key={sub._key}>
-                                          {sub.text}
-                                        </Disclosure.Button>
+                                        <>
+                                          {sub.externalUrl ?
+                                            <a href={sub.externalUrl ?? '/'} className={`${Styles.navLinks} text-black py-2`} id={sub._key} target={sub?.newTab && '_blank'}>{link.text}</a>
+                                            :
+                                            <Disclosure.Button as={Link} href={subMenuLinks ?? '/'} className={Styles.navLinks} target={sub.newTab && '_blank'} key={sub._key}>
+                                              {sub.text}
+                                            </Disclosure.Button>
+                                          }
+                                        </>
                                       )
                                     })}
                                   </div>
@@ -298,9 +324,16 @@ export default function Example({
                     )
                   } else {
                     return (
-                      <Disclosure.Button as={Link} href={menuLinks ?? '/'} className={Styles.navLinks} target={link.newTab && '_blank'} key={link._key}>
-                        {link.text}
-                      </Disclosure.Button>
+                      <>
+                        {link.externalUrl
+                          ?
+                          <a className={Styles.navLinks} href={link.externalUrl} key={link._key} target={link.newTab && '_blank'}>{link.text}</a>
+                          :
+                          <Disclosure.Button as={Link} href={menuLinks ?? '/'} className={Styles.navLinks} target={link.newTab && '_blank'} key={link._key}>
+                            {link.text}
+                          </Disclosure.Button>
+                        }
+                      </>
                     )
                   }
                 })}

@@ -3,6 +3,7 @@ import { teamPage } from "../../../../lib/groq-data"
 import TeamCard from "../components/templates/team-card"
 import { notFound } from "next/navigation"
 import ContentEditor from "../components/util/content-editor"
+export const revalidate = 0;
 
 // GENERATES SEO
 export async function generateMetadata() {

@@ -33,6 +33,7 @@ export default defineType({
                 { type: 'pages' },
                 { type: 'legal' },
                 { type: 'services' },
+                { type: 'homeDesign' },
             ],
         },
         {

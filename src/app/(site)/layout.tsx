@@ -9,6 +9,7 @@ import { interFont } from '../fonts'
 import Pixel from './components/global/pixel'
 import NavbarWide from './components/global/navbar-wide'
 import Script from 'next/script'
+export const revalidate = 0;
 
 // GENERATES SEO
 export async function generateMetadata(): Promise<Metadata> {
@@ -17,7 +18,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: data?.profileSettings?.seo?.title_tag,
     description: data?.profileSettings?.seo?.meta_description,
-    themeColor: data?.appearances?.mainColors?.primaryColor?.hex,
     metadataBase: new URL(data?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
     alternates: {
       canonical: '/'

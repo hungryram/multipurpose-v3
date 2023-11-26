@@ -194,17 +194,22 @@ export default function Footer({
                           (link.internalLink?._type === "legal" && `/legal/${link.internalLink.slug}`) ||
                           (link.internalLink?._type === "services" && `/services/${link.internalLink.slug}`) ||
                           (link.internalLink?._type === "team" && `/team/${link.internalLink.slug}`) ||
+                          (link.internalLink?._type === "homeDesign" && `/`) ||
                           (link.externalUrl && `${link.externalUrl}`)
 
                         return (
                           <li key={link._key}>
-                            <Link
-                              href={quickLinks}
-                              target={link.newTab && '_blank'}
-                              className="text-sm"
-                            >
-                              {link.text}
-                            </Link>
+                            {link.externalUrl ?
+                              <a href={link.externalUrl} target={link.newTab && '_blank'} className="text-sm"></a>
+                              :
+                              <Link
+                                href={quickLinks}
+                                target={link.newTab && '_blank'}
+                                className="text-sm"
+                              >
+                                {link.text}
+                              </Link>
+                            }
                           </li>
                         )
                       })}
@@ -227,13 +232,17 @@ export default function Footer({
 
                       return (
                         <li key={link._key}>
-                          <Link
-                            href={quickLinks}
-                            target={link.newTab && '_blank'}
-                            className="text-sm"
-                          >
-                            {link.text}
-                          </Link>
+                          {link.externalUrl ?
+                            <a href={link.externalUrl} target={link.newTab && '_blank'} className="text-sm"></a>
+                            :
+                            <Link
+                              href={quickLinks}
+                              target={link.newTab && '_blank'}
+                              className="text-sm"
+                            >
+                              {link.text}
+                            </Link>
+                          }
                         </li>
                       )
                     })}
@@ -277,9 +286,17 @@ export default function Footer({
 
                     return (
                       <div key={link._key} className="pb-6">
-                        <Link href={quickLinks} className="text-sm leading-6">
-                          {link.text}
-                        </Link>
+                        {link.externalUrl ?
+                          <a href={link.externalUrl} target={link.newTab && '_blank'} className="text-sm"></a>
+                          :
+                          <Link
+                            href={quickLinks}
+                            target={link.newTab && '_blank'}
+                            className="text-sm"
+                          >
+                            {link.text}
+                          </Link>
+                        }
                       </div>
                     )
                   })}

@@ -3,6 +3,7 @@ import { getServices } from '../../../../../lib/groq-data'
 import Main from '../../components/templates/main'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next';
+export const revalidate = 0;
 
 type Props = {
     params: {
@@ -106,11 +107,6 @@ export default async function servicesSlug({ params }: Props) {
                 pinterest={services?.profileSettings?.social?.pinterest}
                 tiktok={services?.profileSettings?.social?.tiktok}
                 zillow={services?.profileSettings?.social?.zillow}
-                // FORM
-                emailAlerts={services?.profileSettings?.settings?.emailAlerts}
-                sendFrom={services?.profileSettings?.settings?.sendFrom}
-                emailBcc={services?.profileSettings?.settings?.emailBcc}
-                emailCc={services?.profileSettings?.settings?.emailCc}
             />
         </>
     )

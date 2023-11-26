@@ -41,7 +41,8 @@ export default defineType({
                 { type: 'pages' },
                 { type: 'location' },
                 { type: 'services' },
-                { type: 'team' }
+                { type: 'team' },
+                { type: 'homeDesign' },
             ],
         },
         {
@@ -54,7 +55,6 @@ export default defineType({
         {
             name: 'newTab',
             title: 'Open in new tab',
-            hidden: ({ parent }) => parent?.linkType !== "external", // hidden if link type is not external
             type: 'boolean',
         },
         {

@@ -14,10 +14,6 @@ interface Props {
     city: string;
     state: string;
     zip_code: string;
-    emailAlerts: string;
-    sendFrom: string;
-    emailBcc: string;
-    emailCc: string;
     formBuilder: any;
     backgroundStyles: any
     // SOCIAL
@@ -151,7 +147,7 @@ export default function ContactPage({
                 </div>
                 <div>
                     <div className="mx-auto max-w-2xl">
-                        <div className="py-10">
+                        <div className="py-10 px-4">
                             <FormBuilder
                                 formSchema={formBuilder}
                             />

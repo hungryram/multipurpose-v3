@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import ContentEditor from "../components/util/content-editor"
+export const revalidate = 0;
 
 // GENERATES SEO
 export async function generateMetadata() {
