@@ -70,17 +70,18 @@ export default async function TeamSection() {
         }))
     };
 
-
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
             />
-            <div className="section">
+            <div className={team?.appearances?.header?.enableTransparent ? 'pt-40 pb-20' : 'section'}>
                 <div className="container">
                     <div className="mx-auto max-w-2xl text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{team?.pageSetting?.team?.title}</h2>
+                        <div className="content">
+                            <h1>{team?.pageSetting?.team?.title}</h1>
+                        </div>
                         {team?.pageSetting?.team?.content &&
                             <div className="mt-10">
                                 <ContentEditor

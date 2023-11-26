@@ -444,6 +444,9 @@ const metaDataProfile = groq`
   },
 },
 'appearances': *[_type == "appearances"][0]{
+  header {
+    enableTransparent
+  },
   branding {
     favicon {
       asset->{

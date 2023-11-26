@@ -23,7 +23,7 @@ export interface NavbarProps {
 }
 
 
-export default function Example({
+export default function Navbar({
   company_name,
   logo,
   navItems,
@@ -69,7 +69,7 @@ export default function Example({
 
   return (
     <>
-      <header className={`${Styles.header} ${scroll ? Styles.stickyHeader : '-top-52'} ease-in-out transition-all duration-700 ${enableTransparent ? 'absolute left-0 right-0 z-50 top-0' : 'shadow'}`}>
+      <header className={`${Styles.header} ${scroll ? Styles.stickyHeader : '-top-52'} ease-in-out transition-all duration-700 ${enableTransparent ? 'absolute left-0 right-0 z-50 top-0' : 'shadow ${Styles.navbarBarColor}'}`}>
         {enableTopHeader &&
           <div className={`${Styles.topHeader} ${scroll && 'hidden'}`}>
             <div className={Styles.topHeaderContainer}>
@@ -254,7 +254,7 @@ export default function Example({
             </div>
 
             <Disclosure.Panel className="lg:hidden">
-              <div className="space-y-1 pb-3 pt-2 px-4">
+              <div className={`space-y-1 pb-3 pt-2 px-4 ${Styles.menuBarColor}`}>
                 {navItems?.map((link: any) => {
                   const menuLinks =
                     (link.internalLink?._type === "pages" && `/${link.internalLink.slug}`) ||

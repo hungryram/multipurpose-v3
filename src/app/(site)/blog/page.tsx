@@ -43,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: {
       index: hasBlog,
       follow: hasBlog
-  }
+    }
   }
 }
 
@@ -92,7 +92,7 @@ export default async function BlogPage() {
       }
     }))
   };
-  
+
 
   return (
     <>
@@ -100,10 +100,12 @@ export default async function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
       />
-      <div className="section">
+      <div className={posts?.appearances?.header?.enableTransparent ? 'pt-40 pb-20' : 'section'}>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{posts?.pageSetting?.blog?.title}</h2>
+            <div className="content">
+              <h1>{posts?.pageSetting?.blog?.title}</h1>
+            </div>
             {posts?.pageSetting?.blog?.content &&
               <div className="mt-10">
                 <ContentEditor

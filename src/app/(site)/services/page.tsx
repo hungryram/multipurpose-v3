@@ -12,8 +12,6 @@ export async function generateMetadata() {
 
     const hasServices = serviceMeta?.services?.length > 0;
 
-    console.log(serviceMeta.services.length)
-
     return {
         title: serviceMeta?.pageSetting?.services?.seo?.title_tag,
         description: serviceMeta?.pageSetting?.services?.seo?.meta_description,
@@ -75,17 +73,18 @@ export default async function ServicesSection() {
         })),
     };
 
-
     return (
         <>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
             />
-            <div className="section">
+            <div className={services?.appearances?.header?.enableTransparent ? 'pt-40 pb-20' : 'section'}>
                 <div className="container">
                     <div className="mx-auto max-w-2xl text-center">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{services?.pageSetting?.services?.title}</h2>
+                        <div className="content">
+                            <h1>{services?.pageSetting?.services?.title}</h1>
+                        </div>
                         {services?.pageSetting?.services?.content &&
                             <div className="mt-10">
                                 <ContentEditor
@@ -117,9 +116,9 @@ export default async function ServicesSection() {
                                                 <div></div>
                                             }
                                         </div>
-                                        <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">{node.title}</h3>
+                                        <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight">{node.title}</h3>
                                         {node?.detail &&
-                                            <p className="mt-2 text-sm text-gray-500">
+                                            <p className="mt-2">
                                                 {node?.detail}
                                             </p>
                                         }

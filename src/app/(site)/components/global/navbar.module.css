@@ -1,7 +1,10 @@
 .header {
     @apply inset-x-0 z-50 lg:block hidden;
-    background-color: var(--header-background-color);
     color: var(--header-navigation-color);
+}
+
+.navbarBarColor {
+    background-color: var(--header-background-color);
 }
 
 .stickyHeader {
