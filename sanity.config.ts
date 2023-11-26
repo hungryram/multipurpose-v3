@@ -11,7 +11,6 @@ import {apiVersion, dataset, projectId} from './sanity/env'
 import {media} from 'sanity-plugin-media'
 import { settingsPlugin } from './sanity/settings';
 import { PreviewPlugin } from './sanity/productionUrl';
-import {presentationTool} from 'sanity/presentation'
 
 //  DOCUMENTS
 import authorType from './sanity/schemas/documents/author'
@@ -63,11 +62,7 @@ import blogSectionBuilder from './sanity/schemas/pagebuilder/blog-section'
 import servicesSectionBuilder from './sanity/schemas/pagebuilder/service-section'
 import contentBuilder from './sanity/schemas/pagebuilder/content'
 import widgetBuilder from './sanity/schemas/pagebuilder/widget'
-
-const SANITY_STUDIO_PREVIEW_URL = (
-	process.env.SANITY_STUDIO_PREVIEW_URL
-	|| 'http://localhost:3000'
-)
+import { IdxAdmin } from './sanity/schemas/lib/custom-tool-admin';
 
 
 export default defineConfig({
@@ -130,14 +125,12 @@ export default defineConfig({
       widgetBuilder
     ]
   },
+  tools: [
+    IdxAdmin()
+  ],
   plugins: [
-    presentationTool({
-      // Required: set the base URL to the preview location in the front end
-      previewUrl: SANITY_STUDIO_PREVIEW_URL,
-    }),
     deskTool({
       structure: (S) => {
-
         const profileListItem = // A singleton not using `documentListItem`, eg no built-in preview
           S.listItem()
             .title(profileDocument.title || '')
@@ -183,6 +176,7 @@ export default defineConfig({
           .title('Content')
           .items([profileListItem, appearanceListItem, PageSettingsListItem, S.divider(), ...defaultListItems])
       },
+
     }),
     settingsPlugin({types: [appearanceDocument.name, pageSettingsDocument.name, profileDocument.name]}),
     PreviewPlugin({types: ['pages', 'team', 'legal', 'services', 'blog', 'homeDesign']}),
@@ -191,5 +185,5 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
     media(),
-  ]
+  ],
 })
