@@ -127,7 +127,6 @@ export default async function IdxLayout({
     enableTransparent: data?.appearances?.header?.enableTransparent,
   }
 
-
   return (
     <html lang="en">
       <body className={interFont.variable}>
