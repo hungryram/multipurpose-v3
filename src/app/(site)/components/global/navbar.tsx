@@ -69,7 +69,7 @@ export default function Navbar({
 
   return (
     <>
-      <header className={`${Styles.header} ${scroll ? Styles.stickyHeader : '-top-52'} ease-in-out transition-all duration-700 ${enableTransparent ? 'absolute left-0 right-0 z-50 top-0' : 'shadow ${Styles.navbarBarColor}'}`}>
+      <header className={`${Styles.header} ${scroll ? Styles.stickyHeader : '-top-52'} ease-in-out transition-all duration-700 ${enableTransparent ? 'absolute left-0 right-0 z-50 top-0' : `shadow ${Styles.navbarBarColor}`}`}>
         {enableTopHeader &&
           <div className={`${Styles.topHeader} ${scroll && 'hidden'}`}>
             <div className={Styles.topHeaderContainer}>

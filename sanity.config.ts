@@ -25,6 +25,7 @@ import navigationDocument from './sanity/schemas/documents/navigation'
 import servicesDocument from './sanity/schemas/documents/services'
 import legalDocument from './sanity/schemas/documents/legal'
 import pageSettingsDocument from "./sanity/schemas/documents/page-settings"
+
 // OBJECTS
 import contentObject from './sanity/schemas/objects/content'
 import seoObject from './sanity/schemas/objects/seo'
@@ -63,7 +64,6 @@ import servicesSectionBuilder from './sanity/schemas/pagebuilder/service-section
 import contentBuilder from './sanity/schemas/pagebuilder/content'
 import widgetBuilder from './sanity/schemas/pagebuilder/widget'
 import { IdxAdmin } from './sanity/schemas/lib/custom-tool-admin';
-
 
 export default defineConfig({
   basePath: '/admin',
