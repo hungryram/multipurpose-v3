@@ -28,18 +28,6 @@ import HeroBasic from "./hero-basic";
 import DisclosureSeparate from "./disclosure-separate";
 import TestimonialsColumn from "./testimonials-column";
 import LeadFormTwoColumn from "./leadform-two-column";
-import IhfContactWidget from "../../../(idx)/components/widgets/contact-widget";
-import IhfQuickSearch from "@/app/(idx)/components/widgets/quick-search";
-import IhfFeaturedListings from "@/app/(idx)/components/widgets/featured-listings";
-import IhfGallerySlider from "@/app/(idx)/components/widgets/gallery-slider";
-import IhfListingSearchWidget from "@/app/(idx)/components/widgets/listing-search";
-import IhfListingsWidget from "@/app/(idx)/components/widgets/listings-widget";
-import HeaderSection from "./header-section";
-import IhfMarketWidget from "@/app/(idx)/components/widgets/market";
-import IhfMarketIndexWidget from "@/app/(idx)/components/widgets/market-index";
-import IhfPropertyOrganizerWidget from "@/app/(idx)/components/widgets/property-organizer";
-import IhfRegistrationFormWidget from "@/app/(idx)/components/widgets/registration-form";
-import IhfSellMyHouseWidget from "@/app/(idx)/components/widgets/sell-my-house";
 
 interface Props {
     pageBuilder: any[];
@@ -607,65 +595,6 @@ export default function Main({
                                 }}
                             />
                         </div>
-                    )
-                }
-
-                if (section._type === 'widget') {
-
-                    return (
-                        <>
-                            {section?.widgetType === 'contactForm' &&
-                                <IhfContactWidget />
-                            }
-                            {section?.widgetType === 'quickSearch' &&
-                                <IhfQuickSearch
-                                    qsTypeSanity={section?.qsType ?? 'universal'}
-                                />
-                            }
-                            {section?.widgetType === 'featuredListings' &&
-                                <IhfFeaturedListings
-                                    propType={section?.propType}
-                                    sort={section?.sort ?? 'pd'}
-                                    status={section?.status ?? 'active'}
-                                />
-                            }
-                            {section?.widgetType === 'gallerySlider' &&
-                                <IhfGallerySlider
-                                    status={section?.status ?? 'active'}
-                                    effect={section?.effect ?? 'slide'}
-                                />
-                            }
-                            {section?.widgetType === 'listingSearch' &&
-                                <IhfListingSearchWidget />
-                            }
-                            {section?.widgetType === 'listings' &&
-                                <IhfListingsWidget
-                                    propType={section?.propType}
-                                    id={section?.id}
-                                    sort={section?.sort ?? 'pd'}
-                                    status={section?.status ?? 'active'}
-                                />
-                            }
-                            {section?.widgetType === 'market' &&
-                                <IhfMarketWidget
-                                    id={section?.id}
-                                />
-                            }
-                            {section?.widgetType === 'marketIndex' &&
-                                <IhfMarketIndexWidget />
-                            }
-                            {section?.widgetType === 'propOrganizer' &&
-                                <IhfPropertyOrganizerWidget />
-                            }
-                            {section?.widgetType === 'registrationForm' &&
-                                <IhfRegistrationFormWidget
-                                    redirect={section?.redirectUrl}
-                                />
-                            }
-                            {section?.widgetType === 'sellMyHouse' &&
-                                <IhfSellMyHouseWidget />
-                            }
-                        </>
                     )
                 }
 
