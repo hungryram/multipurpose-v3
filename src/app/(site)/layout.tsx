@@ -145,7 +145,6 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <RootScript />
         <style>
           {`
               :root {
