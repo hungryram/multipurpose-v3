@@ -8,8 +8,6 @@ import GoogleAnalytics from './components/global/analytics'
 import { interFont } from '../fonts'
 import Pixel from './components/global/pixel'
 import NavbarWide from './components/global/navbar-wide'
-import Script from 'next/script'
-import RootScript from '../(idx)/components/root-idx-script'
 export const revalidate = 0;
 
 // GENERATES SEO
@@ -127,7 +125,6 @@ export default async function RootLayout({
     hideCta: data?.appearances?.header?.hideCta,
     enableTransparent: data?.appearances?.header?.enableTransparent,
   }
-
 
   return (
     <html lang="en">
