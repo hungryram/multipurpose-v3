@@ -62,7 +62,6 @@ import teamSectionBuilder from './sanity/schemas/pagebuilder/team-section'
 import blogSectionBuilder from './sanity/schemas/pagebuilder/blog-section'
 import servicesSectionBuilder from './sanity/schemas/pagebuilder/service-section'
 import contentBuilder from './sanity/schemas/pagebuilder/content'
-import { IdxAdmin } from './sanity/schemas/lib/custom-tool-admin';
 
 export default defineConfig({
   basePath: '/admin',
@@ -123,9 +122,6 @@ export default defineConfig({
       logosBuilder,
     ]
   },
-  tools: [
-    IdxAdmin()
-  ],
   plugins: [
     deskTool({
       structure: (S) => {
