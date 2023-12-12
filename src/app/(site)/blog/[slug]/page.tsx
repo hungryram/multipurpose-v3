@@ -111,7 +111,7 @@ export default async function BlogSlug({ params }: Props) {
                             <div className="mr-4 flex-shrink-0">
                                 <Image
                                     src={avatar?.url}
-                                    alt={avatar?.altText}
+                                    alt={avatar?.altText ? avatar?.altText : post?.blog?.author?.name}
                                     placeholder={avatar?.lqip ? 'blur' : 'empty'}
                                     blurDataURL={avatar?.lqip}
                                     width={100}
@@ -126,7 +126,7 @@ export default async function BlogSlug({ params }: Props) {
                     }
                     <Image
                         src={postImage?.url}
-                        alt={postImage?.altText}
+                        alt={postImage?.altText ? postImage?.altText : post?.blog?.title}
                         placeholder={postImage?.lqip ? 'blur' : 'empty'}
                         blurDataURL={postImage?.lqip}
                         width={1500}

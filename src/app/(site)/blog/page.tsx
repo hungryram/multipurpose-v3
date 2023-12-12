@@ -127,7 +127,7 @@ export default async function BlogPage() {
                   date={post?.date ? format(parsedDate, 'LLLL	d, yyyy') : undefined}
                   image={postImage?.url}
                   blurData={postImage?.lqip}
-                  altText={postImage?.altText}
+                  altText={postImage?.altText ? postImage?.altText : post?.title}
                 />
               )
             })}
