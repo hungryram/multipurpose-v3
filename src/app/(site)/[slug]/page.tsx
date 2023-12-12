@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: Meta): Promise<Metadata> {
     return {
         title: page?.pages?.seo?.title_tag,
         description: page?.pages?.seo?.meta_description,
+        metadataBase: new URL(page?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
         alternates: {
             canonical: page?.pages?.slug
         },

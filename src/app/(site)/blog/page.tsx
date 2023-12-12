@@ -17,13 +17,14 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: post?.pageSetting?.blog?.seo?.title_tag,
     description: post?.pageSetting?.blog?.seo?.meta_description,
+    metadataBase: new URL(post?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
     alternates: {
-      canonical: 'blog/'
+      canonical: 'blog'
     },
     openGraph: {
       title: post?.blog?.seo?.title_tag,
       description: post?.blog?.seo?.meta_description,
-      url: 'blog/',
+      url: 'blog',
       siteName: post?.profileSettings?.company_name,
       images: post?.blog?.imageData?.asset?.url,
       locale: 'en-US',

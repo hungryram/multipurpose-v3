@@ -15,13 +15,14 @@ export async function generateMetadata() {
     return {
         title: serviceMeta?.pageSetting?.services?.seo?.title_tag,
         description: serviceMeta?.pageSetting?.services?.seo?.meta_description,
+        metadataBase: new URL(serviceMeta?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
         alternates: {
-            canonical: 'services/'
+            canonical: 'services'
         },
         openGraph: {
             title: serviceMeta?.pageSetting?.services?.seo?.title_tag,
             description: serviceMeta?.pageSetting?.services?.seo?.meta_description,
-            url: 'services/',
+            url: 'services',
             siteName: serviceMeta?.profileSettings?.company_name,
             images: serviceMeta?.profileSettings?.seo?.defaultImageBanner?.asset?.url,
             locale: 'en-US',

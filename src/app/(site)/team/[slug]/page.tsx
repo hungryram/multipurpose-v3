@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: Meta): Promise<Metadata> {
     return {
         title: teamMetaData?.team?.seo?.title_tag,
         description: teamMetaData?.team?.seo?.meta_description,
+        metadataBase: new URL(teamMetaData?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
         alternates: {
             canonical: 'team/' + teamMetaData?.team?.slug
         },

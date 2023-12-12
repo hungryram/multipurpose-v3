@@ -19,14 +19,13 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: data?.profileSettings?.seo?.title_tag,
     description: data?.profileSettings?.seo?.meta_description,
-    metadataBase: new URL(data?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
     alternates: {
-      canonical: '/'
+      canonical: data?.profileSettings?.settings?.websiteName
     },
     openGraph: {
       title: data?.profileSettings?.seo?.title_tag,
       description: data?.profileSettings?.seo?.meta_description,
-      url: '/',
+      url: data?.profileSettings?.settings?.websiteName,
       siteName: data?.profileSettings?.company_name,
       images: data?.profileSettings?.seo?.imageData?.asset?.url,
       locale: 'en-US',
@@ -132,7 +131,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-
       <body className={interFont.variable}>
         {data?.profileSettings?.settings?.googleID &&
           <GoogleAnalytics GA_TRACKING_ID={data?.profileSettings?.settings?.googleID} />

@@ -14,13 +14,14 @@ export async function generateMetadata() {
     return {
         title: legal?.pageSetting?.legal?.seo?.title_tag,
         description: legal?.pageSetting?.legal?.seo?.meta_description,
+        metadataBase: new URL(legal?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
         alternates: {
-            canonical: 'legal/'
+            canonical: 'legal'
         },
         openGraph: {
             title: legal?.legal?.seo?.title_tag,
             description: legal?.legal?.seo?.meta_description,
-            url: 'legal/',
+            url: 'legal',
             siteName: legal?.profileSettings?.company_name,
             images: legal?.profileSettings?.seo?.defaultImageBanner?.asset?.url,
             locale: 'en-US',
@@ -50,9 +51,9 @@ export default async function LegalPage() {
     const pageSettings = legal?.pageSetting?.legal
 
     return (
-        <div className="bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <div className="px-6 py-24 sm:py-32 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
-                <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-6xl">{pageSettings?.title}</h2>
+                <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">{pageSettings?.title}</h1>
                 <div className="mt-10">
                     <ContentEditor 
                         content={pageSettings?.content}

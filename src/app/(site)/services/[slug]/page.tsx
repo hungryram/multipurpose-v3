@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Meta): Promise<Metadata> {
     return {
         title: servicesMeta?.services?.seo?.title_tag,
         description: servicesMeta?.services?.seo?.meta_description,
+        metadataBase: new URL(servicesMeta?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
         alternates: {
             canonical: 'services/' + servicesMeta?.services?.slug
         },

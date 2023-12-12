@@ -7,7 +7,7 @@ export default function Pixel({
         <>
             <Script
                 id="facebook-pixel"
-                strategy="afterInteractive"
+                strategy="beforeInteractive"
             >
                 {`
                             !function(f,b,e,v,n,t,s)

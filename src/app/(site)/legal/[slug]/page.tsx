@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Meta): Promise<Metadata> {
     return {
         title: legal?.legal?.seo?.title_tag,
         description: legal?.legal?.seo?.meta_description,
+        metadataBase: new URL(legal?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
         alternates: {
             canonical: 'legal/' + legal?.legal?.slug
         },
@@ -62,8 +63,8 @@ export default async function LegalSlug({ params }: Props) {
     }
 
     return (
-        <div className="bg-white px-6 py-32 lg:px-8">
-            <div className="mx-auto max-w-3xl text-base leading-7 text-gray-700 content">
+        <div className="px-6 py-32 lg:px-8">
+            <div className="mx-auto max-w-3xl content">
                 <h1>{legal?.legal?.title}</h1>
                 <hr />
                 <ContentEditor
