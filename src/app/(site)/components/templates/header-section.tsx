@@ -56,7 +56,7 @@ export default function HeaderSection({
             {secondaryButtonLinking && (
               <>
                 {secondaryButtonLink?.externalUrl ?
-                  <a href={secondaryButtonLinking} className="secondary-button" style={secondaryButtonStyle}>{secondaryButtonLink}</a>
+                  <a href={secondaryButtonLinking} className="secondary-button" style={secondaryButtonStyle}>{secondaryButtonText}</a>
                   :
                   <Link href={secondaryButtonLinking} className="secondary-button" style={secondaryButtonStyle}>
                     {secondaryButtonText} <span aria-hidden="true">→</span>
