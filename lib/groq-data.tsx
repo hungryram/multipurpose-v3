@@ -478,41 +478,81 @@ export const homePageData = groq`
 `
 
 // app/blog/page.tsx
-export const blogPage = groq`
-  {
-    ${metaDataProfile}
-    'pageSetting': *[_type == 'pageSetting'][0]{
-      blog {
-        ...
-      }
-    },
-    'blog': *[_type == 'blog']{
-      _id,
-      title,
-      date,
-      _updatedAt,
-      'slug': slug.current,
-      "author": author->{
-        name,
-        'avatar': picture{
-          asset->{
-            url,
+export async function blogPage(lastId?: number){
+  if(lastId == null) {
+    return client.fetch(groq`
+    {
+      ${metaDataProfile}
+      'pageSetting': *[_type == 'pageSetting'][0]{
+        blog {
+          ...
+        }
+      },
+      'blog': *[_type == 'blog'] | order(date desc){
+        _id,
+        title,
+        date,
+        _updatedAt,
+        'slug': slug.current,
+        "author": author->{
+          name,
+          'avatar': picture{
+            asset->{
+              url,
+            }
           }
-        }
-      },
-      seo {
-        meta_description
-      },
-      'imageData': coverImage {
-        asset-> {
-          altText,
-          'lqip':metadata.lqip,
-          url
-        }
-      },
+        },
+        seo {
+          meta_description
+        },
+        'imageData': coverImage {
+          asset-> {
+            altText,
+            'lqip':metadata.lqip,
+            url
+          }
+        },
+      }
     }
+  `, { next: { revalidate: 60 } })
   }
-`
+
+   return client.fetch(groq`
+   {
+     ${metaDataProfile}
+     'pageSetting': *[_type == 'pageSetting'][0]{
+       blog {
+         ...
+       }
+     },
+     'blog': *[_type == 'blog'] | order(date desc) [0...$lastId]{
+       _id,
+       title,
+       date,
+       _updatedAt,
+       'slug': slug.current,
+       "author": author->{
+         name,
+         'avatar': picture{
+           asset->{
+             url,
+           }
+         }
+       },
+       seo {
+         meta_description
+       },
+       'imageData': coverImage {
+         asset-> {
+           altText,
+           'lqip':metadata.lqip,
+           url
+         }
+       },
+     }
+   }
+ `, {lastId});
+}
 
 // FOR app/services/page.tsx
 export const servicesPage = groq`
