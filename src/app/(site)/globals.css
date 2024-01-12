@@ -73,12 +73,9 @@ body .content h6 {
   @apply text-lg;
 }
 
-.content p + p {
-  @apply mb-8;
-}
-
 .content p {
-  @apply leading-7
+  margin-bottom: 1rem;
+  line-height: 1.7;
 }
 
 .content ul {
