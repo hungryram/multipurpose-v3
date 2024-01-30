@@ -1,5 +1,6 @@
 import { defineType } from "sanity";
 import { BsBriefcase } from "react-icons/bs"
+import { pageBuilder } from "../lib/classes";
 
 export default defineType({
     title: 'Services',
@@ -50,23 +51,7 @@ export default defineType({
             name: 'pageBuilder',
             type: 'array',
             group: 'content',
-            of: [
-                {type: 'hero'},
-                {type: 'contentField'},
-                {type: 'featuredGrid'},
-                {type: 'ctaSection'},
-                {type: 'disclosureSection'},
-                {type: 'logos'},
-                {type: 'gallery'},
-                {type: 'pricing'},
-                {type: 'codeBlock'},
-                {type: 'contactPage'},
-                {type: 'testimonialBuilder'},
-                {type: 'teamDisplay'},
-                {type: 'blogDisplay'},
-                {type: 'servicesDisplay'},
-                {type: 'leadForm'},
-            ]
+            of: pageBuilder
         },
         {
             title: 'Search Engine Optimization',

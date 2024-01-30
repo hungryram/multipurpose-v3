@@ -57,13 +57,13 @@ export default defineType({
                     type: 'text'
                 },
                 {
-                    title: 'Twitter Username',
-                    name: 'twitterHandle',
+                    title: 'X Username',
+                    name: 'xHandle',
                     type: 'string'
                 },
                 {
-                    title: 'Default Image Banner',
-                    name: 'defaultImageBanner',
+                    title: 'Sharing Image Banner',
+                    name: 'sharingImageBanner',
                     type: 'image',
                     description: 'Banner used when sharing your website link'
                 },

@@ -59,7 +59,7 @@ export default defineType({
             }
         },
         {
-            title: 'Website Body Color',
+            title: 'Website Background Color',
             name: 'websiteBodyColor',
             type: 'color',
             options: {

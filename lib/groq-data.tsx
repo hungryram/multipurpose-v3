@@ -313,6 +313,7 @@ const homeOtherDocumentSections = groq`
   _id,
   image,
   name,
+  stars,
   testimonial,
   position
 },
@@ -372,9 +373,16 @@ const otherDocumentSections = groq`
 },
 'allTestimonial': *[_type == 'testimonials']{
   _id,
-  image,
+  image {
+    asset-> {
+      url,
+      'lqip': metadata.lqip,
+      altText
+    }
+  },
   name,
   testimonial,
+  stars,
   position
 },
 `
@@ -392,8 +400,8 @@ export const mainLayoutProfile = groq`
     seo {
       title_tag,
       meta_description,
-      twitterHandle,
-      defaultImageBanner {
+      xHandle,
+      sharingImageBanner {
         asset->{
           url
         }
@@ -428,8 +436,8 @@ const metaDataProfile = groq`
     ...
   },
   seo {
-    twitterHandle,
-    defaultImageBanner {
+    xHandle,
+    sharingImageBanner {
       asset->{
         url
       }

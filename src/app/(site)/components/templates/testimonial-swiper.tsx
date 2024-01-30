@@ -2,10 +2,10 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import { urlForImage } from "../../../../../sanity/lib/image";
 import ContentEditor from "../util/content-editor";
 import HeaderSection from "./header-section";
 import { Navigation } from "swiper";
+import { StarRating } from "./testimonials-section";
 
 interface Props {
   testimonials: any[];
@@ -23,6 +23,7 @@ interface Props {
   paddingTop: string;
   paddingBottom: string;
 }
+
 
 export default function TestimonialSwiper({
   testimonials,
@@ -102,19 +103,22 @@ export default function TestimonialSwiper({
             },
           }}
         >
-            <div className="swiper-button image-swiper-button-next absolute right-0 top-1/2 flex items-center justify-center z-50">
-              <IoIosArrowForward className="text-3xl" style={{
-                color: navigationColors
-              }}/>
-            </div>
-            <div className="swiper-button image-swiper-button-prev absolute left-0 top-1/2 flex items-center justify-center z-50">
-              <IoIosArrowBack className="text-3xl" style={{
-                color: navigationColors
-              }}/>
-            </div>
+          <div className="swiper-button image-swiper-button-next absolute right-0 top-1/2 flex items-center justify-center z-50">
+            <IoIosArrowForward className="text-3xl" style={{
+              color: navigationColors
+            }} />
+          </div>
+          <div className="swiper-button image-swiper-button-prev absolute left-0 top-1/2 flex items-center justify-center z-50">
+            <IoIosArrowBack className="text-3xl" style={{
+              color: navigationColors
+            }} />
+          </div>
           {testimonials?.map((testimonial: any) => (
             <SwiperSlide key={testimonial._id}>
               <div className="mx-auto">
+                <div className="text-center mb-10">
+                  <StarRating rating={Number(testimonial.stars)} />
+                </div>
                 <figure>
                   <blockquote className="text-center">
                     {testimonial.testimonial &&
@@ -128,11 +132,12 @@ export default function TestimonialSwiper({
                   <figcaption className="mt-10">
                     {testimonial?.image &&
                       <Image
-                        className="h-10 w-10 rounded-full mx-auto"
-                        src={urlForImage(testimonial?.image).url()}
-                        alt={testimonial?.name}
-                        width={100}
-                        height={100}
+                        className="h-10 w-10 rounded-full object-cover"
+                        src={testimonial.image.asset.url}
+                        alt={testimonial?.image?.asset?.altText ? testimonial?.image?.asset?.altText : testimonial?.name}
+                        placeholder={testimonial?.image?.asset?.lqip ? 'blur' : 'empty'}
+                        blurDataURL={testimonial?.image?.asset?.lqip}
+                        fill={true}
                       />
                     }
                     <div className="mt-4 flex items-center justify-center space-x-3">

@@ -40,3 +40,21 @@ export const paddingBottom = {
     group: 'settings',
     description: 'Add bottom padding using px, em, rem, or percentages'
 }
+
+export const pageBuilder = [
+    {type: 'hero'},
+    {type: 'contentField'},
+    {type: 'featuredGrid'},
+    {type: 'ctaSection'},
+    {type: 'disclosureSection'},
+    {type: 'logos'},
+    {type: 'gallery'},
+    {type: 'pricing'},
+    {type: 'codeBlock'},
+    {type: 'contactPage'},
+    {type: 'testimonialBuilder'},
+    {type: 'teamDisplay'},
+    {type: 'blogDisplay'},
+    {type: 'servicesDisplay'},
+    {type: 'leadForm'},
+]

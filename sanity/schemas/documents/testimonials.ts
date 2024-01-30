@@ -28,6 +28,20 @@ export default defineType({
             name: 'image',
             type: 'image'
         },
+        {
+            title: 'Stars',
+            name: 'stars',
+            type: 'string',
+            options: {
+                list: [
+                    { title: '5', value: '5' },
+                    { title: '4', value: '4' },
+                    { title: '3', value: '3' },
+                    { title: '2', value: '2' },
+                    { title: '1', value: '1' },
+                ]
+            }
+        },
     ],
     preview: {
         select: {

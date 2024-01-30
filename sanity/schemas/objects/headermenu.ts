@@ -11,17 +11,6 @@ export default defineType({
     },
     fields: [
         {
-            'title': 'Menu Layout',
-            name: 'menuLayout',
-            type: 'string',
-            options: {
-                list: [
-                    {title: 'Simple', value: 'simple'},
-                    {title: 'Wide', value: 'wide'},
-                ]
-            }
-        },
-        {
             title: 'Main navigation',
             name: 'mainNav',
             description: 'Select menu for main navigation',

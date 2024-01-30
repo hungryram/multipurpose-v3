@@ -1,8 +1,7 @@
-import { StarIcon } from '@heroicons/react/20/solid'
 import HeaderSection from './header-section';
 import ContentEditor from '../util/content-editor';
 import Image from 'next/image';
-import { urlForImage } from '../../../../../sanity/lib/image';
+import { StarRating } from './testimonials-section';
 
 function classNames(...classes: any) {
     return classes.filter(Boolean).join(' ')
@@ -41,9 +40,9 @@ export default function TestimonialsColumn({
     const styles = {
         paddingTop: paddingTop ?? '5rem',
         paddingBottom: paddingBottom ?? '5rem',
-      }
-    
-      const allStyles = { ...backgroundStyles, ...styles }
+    }
+
+    const allStyles = { ...backgroundStyles, ...styles }
 
     return (
         <div style={allStyles}>
@@ -65,8 +64,11 @@ export default function TestimonialsColumn({
                 <div className="mt-6 space-y-10 divide-y divide-gray-200 border-b border-t border-gray-200 pb-10">
                     {testimonials.map((testimonial: any) => (
                         <div key={testimonial.id} className="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
-                            <div className="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
+                            <div className="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-2 xl:items-start xl:gap-x-8">
                                 <div className="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
+                                    <div className="mb-4">
+                                        <StarRating rating={Number(testimonial.stars)} />
+                                    </div>
                                     <h3 className="text-sm font-medium text-gray-900">{testimonial.title}</h3>
                                     {testimonial.testimonial &&
                                         <div className="content">
@@ -84,8 +86,10 @@ export default function TestimonialsColumn({
                                         <div className="relative w-12 h-12">
                                             <Image
                                                 className="h-10 w-10 rounded-full object-cover"
-                                                src={urlForImage(testimonial?.image).url()}
-                                                alt={testimonial?.name}
+                                                src={testimonial.image.asset.url}
+                                                alt={testimonial?.image?.asset?.altText ? testimonial?.image?.asset?.altText : testimonial?.name}
+                                                placeholder={testimonial?.image?.asset?.lqip ? 'blur' : 'empty'}
+                                                blurDataURL={testimonial?.image?.asset?.lqip}
                                                 fill={true}
                                             />
                                         </div>

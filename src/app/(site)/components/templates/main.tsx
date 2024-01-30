@@ -28,6 +28,7 @@ import HeroBasic from "./hero-basic";
 import DisclosureSeparate from "./disclosure-separate";
 import TestimonialsColumn from "./testimonials-column";
 import LeadFormTwoColumn from "./leadform-two-column";
+import CalltoActionTextYoutube from "./cta-text-and-youtube";
 
 interface Props {
     pageBuilder: any[];
@@ -274,9 +275,21 @@ export default function Main({
                                     key={section?._key}
                                     image={section?.imageData?.asset?.url}
                                     content={section?.content}
+                                    columnLayout={section?.columnLayout}
                                     reverseColumn={section?.reverseColumn}
                                     altText={section?.imageData?.asset?.altText}
                                     blurData={section?.imageData?.asset?.lqip}
+                                    {...settingsSchema}
+                                    textAlign={section?.textAlign}
+                                />
+                            }
+                            {section.layoutType === 'textAndYoutube' &&
+                                <CalltoActionTextYoutube
+                                    key={section?._key}
+                                    content={section?.content}
+                                    columnLayout={section?.columnLayout}
+                                    youtubeLink={section?.youtube}
+                                    reverseColumn={section?.reverseColumn}
                                     {...settingsSchema}
                                     textAlign={section?.textAlign}
                                 />

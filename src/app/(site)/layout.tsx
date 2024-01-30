@@ -4,15 +4,15 @@ import Navbar from './components/global/navbar'
 import './globals.css'
 import { appearance, mainLayoutProfile } from '../../../lib/groq-data'
 import { Metadata } from 'next';
-import GoogleAnalytics from './components/global/analytics'
-import { interFont } from '../fonts'
+import { GoogleAnalytics } from '@next/third-parties/google'
+import { bodyFont } from '../fonts'
 import Pixel from './components/global/pixel'
 import NavbarWide from './components/global/navbar-wide'
 export const revalidate = 0;
 
 // GENERATES SEO
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await client.fetch(mainLayoutProfile, { next: { revalidate: 60 } })
+  const data = await client.fetch(mainLayoutProfile)
 
   return {
     title: data?.profileSettings?.seo?.title_tag,
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: data?.profileSettings?.seo?.meta_description,
       url: data?.profileSettings?.settings?.websiteName,
       siteName: data?.profileSettings?.company_name,
-      images: data?.profileSettings?.seo?.imageData?.asset?.url,
+      images: data?.profileSettings?.seo?.sharingImageBanner?.asset?.url,
       locale: 'en-US',
       type: 'website',
     },
@@ -56,7 +56,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
-  const data = await client.fetch(appearance, { next: { revalidate: 60 } })
+  const data = await client.fetch(appearance)
 
   const localBusiness = {
     "@context": "https://schema.org",
@@ -89,7 +89,7 @@ export default async function RootLayout({
     ],
     "sameAs": [
       ...(data?.profileSettings?.social?.facebook ? [data.profileSettings.social.facebook] : []),
-      ...(data?.profileSettings?.social?.twitter ? [data.profileSettings.social.twitter] : []),
+      ...(data?.profileSettings?.social?.x ? [data.profileSettings.social.x] : []),
       ...(data?.profileSettings?.social?.instagram ? [data.profileSettings.social.instagram] : []),
       ...(data?.profileSettings?.social?.youtube ? [data.profileSettings.social.youtube] : []),
       ...(data?.profileSettings?.social?.reddit ? [data.profileSettings.social.reddit] : []),
@@ -128,9 +128,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={interFont.variable}>
+      <body className={`${bodyFont.variable}`}>
         {data?.profileSettings?.settings?.googleID &&
-          <GoogleAnalytics GA_TRACKING_ID={data?.profileSettings?.settings?.googleID} />
+          <GoogleAnalytics gaId={data?.profileSettings?.settings?.googleID} />
         }
         {data?.profileSettings?.settings?.facebookPixel &&
           <Pixel
@@ -183,16 +183,9 @@ export default async function RootLayout({
               }
           `}
         </style>
-        {data?.appearances?.header?.menuLayout === 'simple' &&
-          <Navbar
-            {...navbarSchema}
-          />
-        }
-        {data?.appearances?.header?.menuLayout === 'wide' &&
-          <NavbarWide
-            {...navbarSchema}
-          />
-        }
+        <Navbar
+          {...navbarSchema}
+        />
         <main id="mainBody">
           {children}
         </main>

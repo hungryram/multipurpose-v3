@@ -20,6 +20,7 @@ const serializers = {
             return (<Youtube videoId={id} opts={opts} />)
         },
         image: ({ value }) => {
+
             return (
                 <div className={
                     `relative flex ${value.imageAlign == 'left' && 'justify-start' || value.imageAlign == 'center' && 'justify-center' || value.imageAlign =='right' && 'justify-end'}`
