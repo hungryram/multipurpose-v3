@@ -1,6 +1,5 @@
 'use client'
 import { MapPinIcon, EnvelopeIcon, PhoneIcon, DevicePhoneMobileIcon } from '@heroicons/react/24/outline'
-import { contactData } from '../../../../../sample/data';
 import ContentEditor from '../util/content-editor';
 import FormBuilder from './form-builder';
 import Social from './social';
@@ -61,12 +60,10 @@ export default function ContactPage({
                 <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48" style={backgroundStyles}>
                     <div className="mx-auto max-w-xl lg:max-w-lg">
                         <div className="content">
-                            {content ?
+                            {content &&
                                 <ContentEditor
                                     content={content}
                                 />
-                                :
-                                <div dangerouslySetInnerHTML={{ __html: contactData.content }} />
                             }
                         </div>
                         {!hideContact &&

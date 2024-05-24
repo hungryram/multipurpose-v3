@@ -1,11 +1,11 @@
 /* SOCIAL */
 
 .socialComponent {
-  @apply flex space-x-3
+  @apply flex space-x-3 items-center
 }
 
 .socialComponent a {
-    @apply inline-block mr-2 text-2xl;
+    @apply text-2xl;
   }
 
 .socialComponent svg {
