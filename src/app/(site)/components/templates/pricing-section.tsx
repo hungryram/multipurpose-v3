@@ -1,5 +1,4 @@
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
-import { pricingTiers } from '../../../../../sample/data';
 import Styles from "./pricing.module.css"
 import HeaderSection from './header-section';
 
@@ -107,9 +106,9 @@ export default function PricingSection({
     const styles = {
         paddingTop: paddingTop ?? '5rem',
         paddingBottom: paddingBottom ?? '5rem',
-      }
-    
-      const allStyles = { ...backgroundStyles, ...styles }
+    }
+
+    const allStyles = { ...backgroundStyles, ...styles }
 
     return (
         <div style={allStyles}>
@@ -130,7 +129,7 @@ export default function PricingSection({
                 )}
                 <div className={`flow-root ${content && 'mt-16'}`}>
                     <div className={`${Styles.pricingGrid} grid lg:grid-cols-${columnNumber} grid-cols-1`}>
-                        {packages ? packages?.map((node: any, i: any) => {
+                        {packages?.map((node: any, i: any) => {
                             return (
                                 <PricingTable
                                     key={i}
@@ -146,23 +145,6 @@ export default function PricingSection({
                                 />
                             )
                         })
-                            :
-                            pricingTiers?.map((node, i) => {
-                                return (
-                                    <PricingTable
-                                        key={i}
-                                        name={node?.name}
-                                        price={node?.price}
-                                        packageType={node?.packageType}
-                                        features={node?.features}
-                                        href={node?.href}
-                                        ctaText={node?.ctaText}
-                                        description={node?.description}
-                                        packageBackground={packageBackground}
-                                        packageTextColor={packageTextColor}
-                                    />
-                                )
-                            })
                         }
                     </div>
                 </div>

@@ -87,7 +87,6 @@ export default function CalltoActionTextImage({
                                 blurDataURL={blurData}
                                 width={imageWidth ? imageWidth : 1824}
                                 height={1080}
-                                className="shadow-md shadow-[#262626]"
                             />
                         </div>
                     )}

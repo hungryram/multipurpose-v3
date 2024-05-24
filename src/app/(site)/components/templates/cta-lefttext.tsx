@@ -1,5 +1,4 @@
 import ContentEditor from "../util/content-editor";
-import { ctaData } from "../../../../../sample/data";
 import Link from "next/link";
 
 interface Props {
@@ -55,12 +54,10 @@ export default function CalltoActionLeftText({
         <div style={allStyles}>
             <div className="container lg:flex lg:items-center lg:justify-between">
                 <div className="content lg:w-1/2">
-                    {content ?
+                    {content &&
                         <ContentEditor
                             content={content}
                         />
-                        :
-                        <div dangerouslySetInnerHTML={{ __html: ctaData.content }} />
                     }
                 </div>
                 <div className="mt-10 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">

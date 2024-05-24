@@ -5,7 +5,7 @@ import './globals.css'
 import { appearance, mainLayoutProfile } from '../../../lib/groq-data'
 import { Metadata } from 'next';
 import { GoogleAnalytics } from '@next/third-parties/google'
-import { bodyFont } from '../fonts'
+import { bodyFont, headingFont } from '../fonts'
 import Pixel from './components/global/pixel'
 import NavbarWide from './components/global/navbar-wide'
 export const revalidate = 0;
@@ -128,7 +128,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${bodyFont.variable}`}>
+      <body className={`${bodyFont.variable} ${headingFont.variable}`}>
         {data?.profileSettings?.settings?.googleID &&
           <GoogleAnalytics gaId={data?.profileSettings?.settings?.googleID} />
         }

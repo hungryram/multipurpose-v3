@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ctaData } from "../../../../../sample/data";
 import HeaderSection from "./header-section";
 import Styles from "./cta-fullwidthimage.module.css"
 
@@ -50,7 +49,7 @@ export default function CalltoActionFullWidth({
             </div>
             <div className="relative mx-auto lg:w-1/2 justify-center flex items-center">
                 <div className="lg:w-2/3 px-4 section">
-                    {(content || primaryButtonLink || secondaryButtonLink) ? (
+                    {(content || primaryButtonLink || secondaryButtonLink) && (
                         <HeaderSection
                             content={content}
                             textAlign={textAlign}
@@ -63,8 +62,7 @@ export default function CalltoActionFullWidth({
                             secondaryButtonText={secondaryButtonText}
                             secondaryButtonStyle={secondaryButtonStyle}
                         />
-                    ) :
-                        <div dangerouslySetInnerHTML={{ __html: ctaData.content }} />
+                    )
                     }
                 </div>
             </div>

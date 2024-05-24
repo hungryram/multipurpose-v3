@@ -1,6 +1,5 @@
 'use client'
 import Image from "next/image";
-import { heroData } from "../../../../../sample/data";
 import Styles from "./hero.module.css"
 import Link from "next/link";
 import ContentEditor from "../util/content-editor";
