@@ -26,7 +26,9 @@ interface FormSchema {
   buttonLabel: string;
   buttonBackgroundColor: any;
   buttonTextColor: any;
-  formDisclaimer: any
+  formDisclaimer: any;
+  spreadsheetId?: string;
+  sheetName?: string;
 }
 
 interface FormBuilderProps {
@@ -36,7 +38,7 @@ interface FormBuilderProps {
 export default function FormBuilder({ formSchema }: FormBuilderProps) {
   return (
     <div className="py-2">
-      <form action={submitForm}>
+      <form action={(data) => submitForm(data, formSchema?.spreadsheetId, formSchema?.sheetName)}>
         <label className="hidden" htmlFor="name-honey" />
         <input className="hidden" type="text" name="name-honey" />
         <input className="hidden" type="hidden" name="bcc" value={formSchema?.emailBcc} />
