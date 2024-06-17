@@ -20,6 +20,17 @@ export default defineType({
             validation: (Rule) => Rule.required().error('Email Required'),
         },
         {
+            title: 'Google Spreadsheet ID',
+            name: 'spreadsheetId',
+            type: 'string',
+        },
+        {
+            title: 'Google Sheet Name',
+            name: 'sheetName',
+            type: 'string',
+            description: 'Allows form submissions to flow through Google Sheet'
+        },
+        {
             title: 'Cc',
             name: 'emailCc',
             type: 'string',
