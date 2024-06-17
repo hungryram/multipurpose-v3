@@ -21,6 +21,7 @@ type Meta = {
     }
 }
 
+
 // GENERATES SEO
 export async function generateMetadata({ params }: Meta): Promise<Metadata> {
     const slug = params.slug
@@ -58,6 +59,7 @@ export async function generateMetadata({ params }: Meta): Promise<Metadata> {
         }
     }
 }
+
 
 // GENERATES PAGE DATA
 export default async function Page({ params }: Props) {
